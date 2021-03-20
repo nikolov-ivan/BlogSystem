@@ -1,5 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Footer from './components/Footer/Footer';
+import Home from "./components/Pages/Home";
 import "./App.css";
 
 function App() {
@@ -7,8 +9,9 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route />
+        <Route path="/" component={Home} />
       </Switch>
+      <Footer/>
     </div>
   );
 }
