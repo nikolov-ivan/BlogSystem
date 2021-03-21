@@ -1,7 +1,7 @@
 ﻿namespace BlogSystem.Data.Models
 {
-
     using System;
+
     public class Post
     {
         public int Id { get; set; }
