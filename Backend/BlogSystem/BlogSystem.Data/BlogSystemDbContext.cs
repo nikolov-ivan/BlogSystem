@@ -1,5 +1,6 @@
 ﻿namespace BlogSystem.Data
 {
+    using BlogSystem.Data.Models;
     using Microsoft.EntityFrameworkCore;
     public class BlogSystemDbContext : DbContext
     {
@@ -8,5 +9,7 @@
         {
 
         }
+
+        public DbSet<Post> Posts { get; set; }
     }
 }
