@@ -1,6 +1,6 @@
 import { React } from "react";
-import { Link } from "react-router-dom";
-import styles from './Header.module.css';
+import { NavLink } from "react-router-dom";
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
@@ -8,16 +8,16 @@ const Header = () => {
       <nav>
         <ul className={styles.nav}>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/Login">Login</Link>
+            <NavLink to="/Login">Login</NavLink>
           </li>
           <li>
-            <Link to="/Register">Register</Link>
+            <NavLink to="/Register">Register</NavLink>
           </li>
           <li>
-            <Link to="/Logout">Logout</Link>
+            <NavLink to="/Logout">Logout</NavLink>
           </li>
         </ul>
       </nav>
