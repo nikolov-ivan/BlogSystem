@@ -14,7 +14,9 @@ body {
   width: 100%;
 }
 .cards {
+  margin-top: 25px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  min-height: 70vh;
 }

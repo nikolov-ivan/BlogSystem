@@ -1,6 +1,8 @@
 namespace BlogSystem
 {
     using BlogSystem.Data;
+    using BlogSystem.Services.Contracts;
+    using BlogSystem.Services.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -23,6 +25,7 @@ namespace BlogSystem
             services.AddDbContext<BlogSystemDbContext>(options =>
             options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddTransient<IPostsService, PostsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
