@@ -1,27 +1,33 @@
 import { React } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header className={styles.header}>
-      <nav>
-        <ul className={styles.nav}>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Register">Register</NavLink>
-          </li>
-          <li>
-            <NavLink to="/Logout">Logout</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav className={styles.nav}>
+      <ul className={styles.menuItems}>
+        <li>
+          <Link data-item="Home" to="/">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link data-item="Login" to="/Login">
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link data-item="Register" to="/Register">
+            Register
+          </Link>
+        </li>
+        <li>
+          <Link data-item="Logout" to="/Logout">
+            Logout
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

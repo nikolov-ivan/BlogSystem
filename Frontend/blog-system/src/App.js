@@ -2,9 +2,9 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Pages/Home";
-import Login from './components/Pages/Login';
-import Register from './components/Pages/Register';
-import Logout from './components/Pages/Logout';
+import Login from "./components/Pages/Login";
+import Register from "./components/Pages/Register";
+import Logout from "./components/Pages/Logout";
 import "./App.css";
 
 function App() {
