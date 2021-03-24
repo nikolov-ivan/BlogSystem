@@ -24,6 +24,16 @@ namespace BlogSystem
         {
             services.AddDbContext<BlogSystemDbContext>(options =>
             options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins(
+                            "http://localhost:3000",
+                            "http://www.contoso.com");
+                    });
+            });
             services.AddControllers();
             services.AddTransient<IPostsService, PostsService>();
         }
@@ -39,6 +49,8 @@ namespace BlogSystem
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
