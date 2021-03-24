@@ -24,8 +24,7 @@ const Home = () => {
       );
   }, []);
   return (
-    <div>
-      <h1> This is Home page!</h1>
+    <div>      
       <div className="cards">
         {items.map((item) => (
           <Card
@@ -37,6 +36,7 @@ const Home = () => {
           />
         ))}
       </div>
+      <div className="sidebar"></div>
     </div>
   );
 };

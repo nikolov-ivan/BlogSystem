@@ -4,7 +4,7 @@ import styles from "./Card.module.css";
 const Card = (props) => {
   return (
     <div className={styles.card}>
-      <img src={props.imageUrl} />
+      <img src={props.imageUrl} alt={props.title}/>
       <div className={styles.body}>
         <h2>{props.title}</h2>
         <p>
