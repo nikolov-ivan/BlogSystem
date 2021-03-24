@@ -5,6 +5,7 @@ import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import Register from "./components/Pages/Register";
 import Logout from "./components/Pages/Logout";
+import Details from "./components/Pages/Details";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Register" component={Register} />
         <Route exact path="/Logout" component={Logout} />
+        <Route exact path="/Posts/Details/:postId" component={Details} />
       </Switch>
       <Footer />
     </div>

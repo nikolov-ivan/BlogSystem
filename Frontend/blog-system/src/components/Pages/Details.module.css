@@ -1,0 +1,17 @@
+.details_img {
+  min-width: 60%;
+  min-height: 60%;
+  max-width: 60%;
+  max-height: 60%;
+}
+.details_p {
+  display: inline-block;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: x-large;
+  max-width: 60%;
+}
+
+.details_h1 {
+  margin: 25px 0;
+}

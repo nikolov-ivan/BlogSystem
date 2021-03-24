@@ -20,5 +20,10 @@ namespace BlogSystem.Services.Services
         {
             return this.db.Posts.ToList();
         }
+
+        public Post GetById(int id)
+        {
+            return this.db.Posts.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }

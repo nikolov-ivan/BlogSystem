@@ -7,5 +7,7 @@
     public interface IPostsService
     {
         List<Post> GetAllAsync();
+
+        Post GetById(int id);
     }
 }

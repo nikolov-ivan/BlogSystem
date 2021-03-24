@@ -22,5 +22,12 @@
             var posts = this.postsService.GetAllAsync();
             return this.Ok(posts);
         }
+
+        [HttpGet("api/getbyid/{id}")]
+        public IActionResult GetById(int id)
+        {
+            var post = this.postsService.GetById(id);
+            return this.Ok(post);
+        }
     }
 }
