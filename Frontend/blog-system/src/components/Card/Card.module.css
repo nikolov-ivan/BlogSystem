@@ -52,3 +52,7 @@
   min-height: 210px;
   padding-bottom: 5px;
 }
+
+.card a{
+  text-decoration: none;
+}

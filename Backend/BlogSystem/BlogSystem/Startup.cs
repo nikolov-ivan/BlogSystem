@@ -1,10 +1,12 @@
 namespace BlogSystem
 {
     using BlogSystem.Data;
+    using BlogSystem.Data.Models;
     using BlogSystem.Services.Contracts;
     using BlogSystem.Services.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -24,18 +26,23 @@ namespace BlogSystem
         {
             services.AddDbContext<BlogSystemDbContext>(options =>
             options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<BlogUser, Role>()
+                .AddEntityFrameworkStores<BlogSystemDbContext>()
+                .AddDefaultTokenProviders();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
                     builder =>
                     {
                         builder.WithOrigins(
-                            "http://localhost:3000",
-                            "http://www.contoso.com");
+                            "http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
                     });
             });
             services.AddControllers();
             services.AddTransient<IPostsService, PostsService>();
+            services.AddTransient<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

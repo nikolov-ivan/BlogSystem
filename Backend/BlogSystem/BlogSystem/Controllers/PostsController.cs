@@ -1,8 +1,5 @@
 ﻿namespace BlogSystem.Controllers
 {
-    using System.Collections.Generic;
-
-    using BlogSystem.Data.Models;
     using BlogSystem.Services.Contracts;
     using Microsoft.AspNetCore.Mvc;
 
