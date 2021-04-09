@@ -1,19 +1,30 @@
-export const Login = (email, password) => {
+// export const Login = (userData) => {
+//   return fetch("https://localhost:44362/api/login", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(userData),
+//   })
+// };
+
+export const Register = (userData) => {
   return fetch("https://localhost:44362/api/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(email, password),
-  }).then((data) => data.json());
+    body: JSON.stringify(userData),
+  }).then((data) => data.json())
 };
 
-export const Register = (email, password) => {
-    return fetch("https://localhost:44362/api/register/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(email, password),
-    });
-  };
+export const signIn = (userData) => {
+  return fetch("https://localhost:44362/api/login/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userData),
+    
+  }).then(data=>data.json())
+};

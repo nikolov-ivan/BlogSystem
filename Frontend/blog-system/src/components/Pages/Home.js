@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
-
+import AuthContext from "../../contexts/AuthContext";
 const Home = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     fetch("https://localhost:44362/api/getall")
       .then((res) => res.json())

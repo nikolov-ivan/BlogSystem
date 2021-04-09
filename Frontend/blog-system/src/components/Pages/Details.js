@@ -3,7 +3,6 @@ import * as postsService from "../../services/postsService";
 import styles from "./Details.module.css";
 
 const Details = ({ match }) => {
-  console.log(match);
   let [post, setPost] = useState({});
   
 

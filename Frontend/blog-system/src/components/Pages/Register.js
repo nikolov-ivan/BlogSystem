@@ -1,33 +1,40 @@
-import { React } from "react";
+import {useState, useContext } from "react";
 import * as usersService from "../../services/usersService";
 
-const Register = (props) => {
+const Register = ({ history }) => {
+  const [email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
   const onSubmitHandler = (e) => {
-    e.preventDefault();    
-    
-    const email = e.target.Email.value;
-    const password = e.target.Password.value;
+    e.preventDefault();
     const userData = {};
-
-    userData.email = email;
-    userData.password = password;
-
+    userData.Email = email;
+    userData.Password = Password;
     usersService.Register(userData);
+    history.push("/");
   };
   return (
     <form onSubmit={onSubmitHandler}>
       <h1>Register</h1>
       <label htmlFor="Email">
         <p>Email</p>
-        <input type="text" name="Email"/>
+        <input
+          type="email"
+          name="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
       </label>
       <label htmlFor="Password">
         <p>Password</p>
-        <input type="text" name="Password"/>
+        <input
+          type="text"
+          name="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </label>
-      <label>
+      <label htmlFor="ConfirmPassword">
         <p>Confirm Password</p>
-        <input type="text" />
+        <input type="text" name="Confirm Password" />
       </label>
       <div>
         <input type="submit" value="Register" />
