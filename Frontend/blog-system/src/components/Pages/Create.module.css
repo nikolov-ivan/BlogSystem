@@ -1,0 +1,15 @@
+.title {
+    margin: 50px auto;
+}
+.title_input {
+    width: 60%;
+    margin-left: 20px;
+    font-size: larger;
+}
+.tinyContainer {
+    margin: 50px 150px;
+}
+.form {
+    width: 69%;
+    margin-top: 40px;
+}

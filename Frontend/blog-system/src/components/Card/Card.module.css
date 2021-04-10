@@ -53,6 +53,15 @@
   padding-bottom: 5px;
 }
 
-.card a{
+.card a {
   text-decoration: none;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-between;
+}
+.userInfo h5 {
+  margin: 0px 10px;
+  color: black;
 }

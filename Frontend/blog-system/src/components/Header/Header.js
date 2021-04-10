@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import AuthContext from "../../contexts/AuthContext";
-import Logout from "../Pages/Logout";
+import GreetingMessage from "../GreetingMessage/GreetingMessage";
 
 const Header = () => {
   const { authInfo } = useContext(AuthContext);
@@ -22,7 +22,13 @@ const Header = () => {
             </Link>
           </li>
         ) : null}
-        {!isAuthenticated ? <li><Link data-item="Register" to='/Register' >Register</Link></li> : null}
+        {!isAuthenticated ? (
+          <li>
+            <Link data-item="Register" to="/Register">
+              Register
+            </Link>
+          </li>
+        ) : null}
         {isAuthenticated ? (
           <li>
             <Link data-item="Logout" to="/Logout">
@@ -30,6 +36,18 @@ const Header = () => {
             </Link>
           </li>
         ) : null}
+        {isAuthenticated ? (
+          <li>
+            <Link data-item="Create" to="/Create">
+              Create
+            </Link>
+          </li>
+        ) : null}
+        <li className={styles.greetingMessage}>
+          <Link to="/">
+            <GreetingMessage />
+          </Link>
+        </li>
       </ul>
     </nav>
   );

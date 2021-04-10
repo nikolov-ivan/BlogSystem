@@ -1,24 +1,26 @@
-import { React, useState, useContext } from "react";
+import { React, useState, useContext, useEffect } from "react";
 import * as usersService from "../../services/usersService";
-import AuthContext from '../../contexts/AuthContext';
+import AuthContext from "../../contexts/AuthContext";
+import styles from './Login.module.css';
 
 const Login = ({ history }) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const {userInfo} = useContext(AuthContext);
-  const [user, setUser] = userInfo;  
+  const { userInfo } = useContext(AuthContext);  
+  const [user, setUser] = userInfo;
+ 
   const onSubmitLoginHandler = async (e) => {
     e.preventDefault();
-    const userData = {};
+    const userData = {};    
     userData.email = Email;
-    userData.password = Password;
-    const token = await usersService.signIn(userData);
-    setUser(oldUser => oldUser = Email);      
+    userData.password = Password;    
+    const token = await usersService.signIn(userData);       
+    setUser(Email);
     history.push("/");
   };
   return (
-    <form onSubmit={onSubmitLoginHandler}>
-      <h1>Login, user</h1>
+    <form onSubmit={onSubmitLoginHandler} className={styles.form}>
+      <h1>Login</h1>
       <label htmlFor="Email">
         <p>Email</p>
         <input

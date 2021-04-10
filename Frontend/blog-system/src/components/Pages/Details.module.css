@@ -3,6 +3,7 @@
   min-height: 60%;
   max-width: 60%;
   max-height: 60%;
+  object-fit: cover;
 }
 .details_p {
   display: inline-block;
@@ -14,4 +15,21 @@
 
 .details_h1 {
   margin: 25px 0;
+}
+
+.details_userDetails {
+  display: flex;
+  justify-content: space-around;
+}
+.details_userDetails p {
+  font-weight: bold;
+}
+.detail_container {
+  width: 69%;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+.buttons_container {
+  display: flex;
+  justify-content: center;
 }

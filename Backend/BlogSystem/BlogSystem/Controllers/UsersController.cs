@@ -63,13 +63,13 @@
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenAsString = tokenHandler.WriteToken(token);
-            return this.Ok(new { tokenAsString});
+            return this.Ok(new { tokenAsString });
         }
 
-        [HttpDelete("api/login/{id}")]
+        [HttpDelete("api/{id}")]
         public ActionResult<string> Delete(int id)
         {
-            return this.Ok("Mother fucker!!");
+                        return this.Ok("Mother fucker!!");
         }
     }
 }

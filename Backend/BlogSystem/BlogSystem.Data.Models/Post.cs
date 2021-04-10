@@ -15,5 +15,7 @@
         public DateTime CreatedOn { get; set; }
 
         public BlogUser User { get; set; }
+
+        public string Author { get; set; }
     }
 }

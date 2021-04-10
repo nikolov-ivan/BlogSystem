@@ -1,5 +1,6 @@
 ﻿using BlogSystem.Data;
 using BlogSystem.Data.Models;
+using BlogSystem.Models.Posts;
 using BlogSystem.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -14,6 +15,19 @@ namespace BlogSystem.Services.Services
         public PostsService(BlogSystemDbContext db)
         {
             this.db = db;
+        }
+
+        public async Task Create(Post post)
+        {
+            await this.db.AddAsync(post);
+            await this.db.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var post = GetById(id);
+            this.db.Posts.Remove(post);
+            await this.db.SaveChangesAsync();
         }
 
         public List<Post> GetAllAsync()

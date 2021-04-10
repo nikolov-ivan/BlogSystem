@@ -13,11 +13,8 @@ body {
 #root {
   width: 100%;
 }
-.cards {
-  margin-top: 25px;
+
+.main {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  min-height: 70vh;
-  max-width: 66%;
+  width: 100%;
 }

@@ -1,0 +1,9 @@
+.cards {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  min-height: 70vh;
+  max-width: 69%;
+  justify-content: center;
+}

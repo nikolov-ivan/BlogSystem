@@ -1,25 +1,15 @@
-nav {
-  background: #f9f9f9;
-  padding: 16px;
-}
-nav .menuItems {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-nav .menuItems li {
-  margin: 50px;
-}
-nav .menuItems li a {
+.button {
+  margin-left: 20px;
   text-decoration: none;
   color: #8f8f8f;
   font-size: 24px;
   font-weight: 400;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.1s ease-in-out;
   position: relative;
   text-transform: uppercase;
 }
-nav .menuItems li a::before {
+
+.button::before {
   content: attr(data-item);
   transition: 0.5s;
   color: #8254ff;
@@ -31,11 +21,7 @@ nav .menuItems li a::before {
   width: 0;
   overflow: hidden;
 }
-nav .menuItems li a:hover::before {
+.button:hover::before {
   width: 100%;
   transition: all 0.5s ease-in-out;
-}
-
-.greetingMessage {
-  align-self: flex-end;
 }

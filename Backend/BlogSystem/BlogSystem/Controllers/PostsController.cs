@@ -1,7 +1,11 @@
 ﻿namespace BlogSystem.Controllers
 {
+    using BlogSystem.Data.Models;
+    using BlogSystem.Models.Posts;
     using BlogSystem.Services.Contracts;
     using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Threading.Tasks;
 
     [ApiController]
     public class PostsController : ControllerBase
@@ -25,6 +29,28 @@
         {
             var post = this.postsService.GetById(id);
             return this.Ok(post);
+        }
+
+        [HttpPost("api/create")]
+        public async Task<ActionResult<Post>> Create(CreatePostInputModel model)
+        {
+            var post = new Post
+            {
+                Content = model.Content,
+                Title = model.Title,
+                ImageUrl = model.ImageUrl,
+                CreatedOn = DateTime.UtcNow,
+                Author = model.Author,
+            };
+            await this.postsService.Create(post);
+            return this.Ok(post);
+        }
+
+        [HttpDelete("api/delete/{id}")]
+        public async Task Delete(int id)
+        {
+            await this.postsService.Delete(id);
+
         }
     }
 }
