@@ -33,6 +33,7 @@ const Edit = ({ history, match }) => {
       .catch((e) => {
         return e;
       });
+      
   }, [match]);
   return (
     <form onSubmit={onSubmitHandler} className={styles.form}>
@@ -73,7 +74,7 @@ const Edit = ({ history, match }) => {
         ></Editor>
       </div>
       <div>
-        <input type="submit" value="Create post" />
+        <input type="submit" value="Save" />
       </div>
     </form>
   );

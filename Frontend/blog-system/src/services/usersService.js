@@ -1,13 +1,3 @@
-// export const Login = (userData) => {
-//   return fetch("https://localhost:44362/api/login", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(userData),
-//   })
-// };
-
 export const Register = (userData) => {
   return fetch("https://localhost:44362/api/register/", {
     method: "POST",

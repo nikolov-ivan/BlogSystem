@@ -33,7 +33,7 @@ const Details = ({ history, match }) => {
         <button value="delete" onClick={deletePost}>
           Delete
         </button>
-        <Link to="/Edit"><button value="edit">Edit</button></Link>
+        <Link to={`/Edit/${match.params.postId}`} ><button value="edit">Edit</button></Link>
       </div>
       <p className={styles.details_p}>
         <ReactHtml html={post.content} />

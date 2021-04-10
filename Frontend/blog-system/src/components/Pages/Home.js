@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "./../Button/Button";
 import styles from "./Home.module.css";
 import Sanitized from "react-sanitized";
+import ReactPaginate from 'react-paginate';
 
 const Home = () => {
   const [error, setError] = useState(null);
@@ -16,16 +17,18 @@ const Home = () => {
         (result) => {
           setIsLoaded(true);
           setItems(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        },        
         (error) => {
           setIsLoaded(true);
           setError(error);
         }
       );
   }, []);
+
+  const handlePageClick = (data) => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * this.props.perPage);
+  }
 
   return (
     <div className={styles.cards}>
@@ -39,7 +42,20 @@ const Home = () => {
           imageUrl={item.imageUrl}
           createdOn={item.createdOn}
         />
+        
       ))}
+      <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={this.state.pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+        />
     </div>
   );
 };

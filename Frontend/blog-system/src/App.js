@@ -47,7 +47,7 @@ function App() {
                 component={isAuth(Details)}
               />
               <Route exact path="/Create" component={isAuth(Create)} />
-              <Route exact path="/Edit" component={isAuth(Edit)} />
+              <Route exact path="/Edit/:postId" component={isAuth(Edit)} />
             </Switch>
             <Sidebar />
           </ErrorBoundary>
