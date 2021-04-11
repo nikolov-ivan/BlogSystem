@@ -23,8 +23,8 @@ const Login = ({ history }) => {
         break;
       case "warning":
         NotificationManager.warning(
-          "Warning message",
-          "Close after 3000ms",
+          "Invalid Password!",
+          "Enter correct password again!",
           3000
         );
         break;
@@ -40,20 +40,25 @@ const Login = ({ history }) => {
     const userData = {};
     userData.email = Email;
     userData.password = Password;
+    if (Password.length < 3) {
+      message = "warning";
+      createNotification(message);
+      history.push("/Login");
+      return;
+    }
     const token = await usersService
       .signIn(userData)
       .then((data) => {
         message = "success";
         setUser(Email);
 
-        history.push("/");        
+        history.push("/");
       })
       .catch((e) => {
         message = "error";
         history.push("/Login");
       });
     createNotification(message);
-    
   };
   return (
     <div className={styles.container}>
@@ -62,7 +67,7 @@ const Login = ({ history }) => {
         <label htmlFor="Email">
           <p>Email</p>
           <input
-          className = {styles.emailInput}
+            className={styles.emailInput}
             type="email"
             name="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +77,7 @@ const Login = ({ history }) => {
         <label htmlFor="Password">
           <p>Password</p>
           <input
-          className={styles.password}
+            className={styles.password}
             type="password"
             name="Password"
             onChange={(e) => setPassword(e.target.value)}

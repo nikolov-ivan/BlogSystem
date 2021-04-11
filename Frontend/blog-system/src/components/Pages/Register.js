@@ -19,13 +19,13 @@ const Register = ({ history }) => {
         break;
       case "warning":
         NotificationManager.warning(
-          "Warning message",
-          "Close after 3000ms",
+          "Invalid password",
+          "Insert more than 3 characters",
           3000
         );
         break;
       case "error":
-        NotificationManager.error("Wrong login credentials", "", 5000, () => {
+        NotificationManager.error("Wrong register credentials", "", 5000, () => {
           alert("callback");
         });
         break;
@@ -36,6 +36,12 @@ const Register = ({ history }) => {
     const userData = {};
     userData.Email = email;
     userData.Password = Password;
+    if (Password.length < 3) {
+      registerMessage = "warning";
+      createNotification(registerMessage);
+      history.push("/Register");
+      return;
+    }
     await usersService
       .Register(userData)
       .then((data) => {
@@ -66,7 +72,7 @@ const Register = ({ history }) => {
           <p>Password</p>
           <input
           className={styles.password}
-            type="text"
+            type="password"
             name="Password"
             onChange={(e) => setPassword(e.target.value)}
           />

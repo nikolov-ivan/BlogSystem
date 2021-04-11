@@ -12,8 +12,6 @@ const Home = () => {
 
   const getData = async () => {
     const data = await postsService.getAll();
-    console.log(data);
-    
     const slice = data.slice(offset, offset + perPage);
     const postData = slice.map((pd) => (
       <Card
@@ -35,7 +33,7 @@ const Home = () => {
 
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
-    setOffset(selectedPage*perPage);
+    setOffset(selectedPage * perPage);
   };
   return (
     <div className={styles.cards}>

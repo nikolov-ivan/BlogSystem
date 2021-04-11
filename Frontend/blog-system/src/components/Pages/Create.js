@@ -24,11 +24,7 @@ const Create = ({ history }) => {
         NotificationManager.success("Successful Login");
         break;
       case "warning":
-        NotificationManager.warning(
-          "Warning message",
-          "Close after 3000ms",
-          3000
-        );
+        NotificationManager.warning("Invalid post", "", 3000);
         break;
       case "error":
         NotificationManager.error("Wrong login credentials", "", 5000, () => {
@@ -45,6 +41,13 @@ const Create = ({ history }) => {
     userData.content = content;
     userData.imageUrl = imageUrl;
     userData.author = user;
+    if (title.length < 5 || content.length < 5) {
+      message = "warning";
+      createNotification(message);
+      history.push("/Create");
+      return;
+    }
+
     postsService
       .create(userData)
       .then((data) => {
@@ -96,7 +99,7 @@ const Create = ({ history }) => {
         ></Editor>
       </div>
       <div>
-        <input type="submit" value="Create post" className={styles.button}/>
+        <input type="submit" value="Create post" className={styles.button} />
       </div>
     </form>
   );
