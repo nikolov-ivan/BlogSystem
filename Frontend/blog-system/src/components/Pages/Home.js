@@ -1,61 +1,61 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
-import { Link } from "react-router-dom";
-import Button from "./../Button/Button";
 import styles from "./Home.module.css";
-import Sanitized from "react-sanitized";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from "react-paginate";
+import * as postsService from "../../services/postsService";
 
 const Home = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [data, setData] = useState([]);
+  const [perPage] = useState(3);
+  const [pageCount, setPageCount] = useState(0); 
+
+  const getData = async () => {
+    const data = await postsService.getAll();
+    const slice = data.slice(offset, offset + perPage);
+    const postData = slice.map((pd) => (
+      <Card
+        key={pd.id}
+        id={pd.id}
+        title={pd.title.replace(/<[^>]+>/g, "")}
+        author={pd.author}
+        content={pd.content.replace(/<[^>]+>/g, "").slice(0, 200) + "..."}
+        imageUrl={pd.imageUrl}
+        createdOn={pd.createdOn}
+      />
+    ));    
+    setData(postData);
+    setPageCount(Math.ceil(data.length / perPage));
+  };
   useEffect(() => {
-    fetch("https://localhost:44362/api/getall")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },        
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
+    getData();
+  }, [offset]);
 
-  const handlePageClick = (data) => {
-    let selected = data.selected;
-    let offset = Math.ceil(selected * this.props.perPage);
-  }
-
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+    console.log(e);
+    
+    setOffset(selectedPage + 1);
+  };
   return (
     <div className={styles.cards}>
-      {items.map((item) => (
-        <Card
-          key={item.id}
-          id={item.id}
-          title={item.title.replace(/<[^>]+>/g, "")}
-          author={item.author}
-          content={item.content.replace(/<[^>]+>/g, "").slice(0, 200) + "..."}
-          imageUrl={item.imageUrl}
-          createdOn={item.createdOn}
-        />
-        
-      ))}
+      {data}
       <ReactPaginate
-          previousLabel={'previous'}
-          nextLabel={'next'}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          pageCount={this.state.pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination'}
-          activeClassName={'active'}
-        />
+        previousLabel={"<"}
+        nextLabel={">"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        subContainerClassName={"pages pagination"}
+        activeClassName={"active"}
+      />
     </div>
   );
 };

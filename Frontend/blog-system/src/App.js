@@ -13,6 +13,7 @@ import AuthContext from "./contexts/AuthContext";
 import { useState, useEffect } from "react";
 import isAuth from "./components/Hoc/isAuth";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import 'react-notifications/lib/notifications.css';
 
 function App() {
   const [user, setUser] = useState(null);

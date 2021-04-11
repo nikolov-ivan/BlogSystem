@@ -65,11 +65,5 @@
             var tokenAsString = tokenHandler.WriteToken(token);
             return this.Ok(new { tokenAsString });
         }
-
-        [HttpDelete("api/{id}")]
-        public ActionResult<string> Delete(int id)
-        {
-                        return this.Ok("Mother fucker!!");
-        }
     }
 }

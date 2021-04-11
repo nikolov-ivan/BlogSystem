@@ -1,5 +1,6 @@
 import {useState, useContext } from "react";
 import * as usersService from "../../services/usersService";
+import styles from "./Login.module.css";
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const Register = ({ history }) => {
     history.push("/");
   };
   return (
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={onSubmitHandler} className={styles.form}>
       <h1>Register</h1>
       <label htmlFor="Email">
         <p>Email</p>
