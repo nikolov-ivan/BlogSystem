@@ -5,7 +5,7 @@ export const Register = (userData) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(userData),
-  }).then((data) => data.json())
+  })
 };
 
 export const signIn = (userData) => {
@@ -14,7 +14,6 @@ export const signIn = (userData) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
-    
+    body: JSON.stringify(userData),    
   }).then(data=>data.json())
 };

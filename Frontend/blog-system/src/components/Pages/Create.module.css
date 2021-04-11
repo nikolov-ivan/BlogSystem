@@ -12,4 +12,14 @@
 .form {
     width: 69%;
     margin-top: 40px;
+    margin-bottom: 50px;
 }
+.button{
+    padding: 10px 20px;
+  
+  }
+  .button:hover {
+    padding: 15px 25px;
+    background-color: bisque;
+    cursor:pointer;    
+  }

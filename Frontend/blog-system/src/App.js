@@ -14,12 +14,37 @@ import { useState, useEffect } from "react";
 import isAuth from "./components/Hoc/isAuth";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import 'react-notifications/lib/notifications.css';
+import { NotificationManager } from "react-notifications";
 
 function App() {
   const [user, setUser] = useState(null);
   const authInfo = {
     isAuthenticated: Boolean(user),
     email: user?.email,
+    token:'',
+  };
+  const createNotification = (type) => {
+    // eslint-disable-next-line default-case
+    switch (type) {
+      case "info":
+        NotificationManager.info("Logged out");
+        break;
+      case "success":
+        NotificationManager.success("Successful Registration");
+        break;
+      case "warning":
+        NotificationManager.warning(
+          "Warning message",
+          "Close after 3000ms",
+          3000
+        );
+        break;
+      case "error":
+        NotificationManager.error("Wrong login credentials", "", 5000, () => {
+          alert("callback");
+        });
+        break;
+    }
   };
   return (
     <div className="App">
@@ -38,6 +63,7 @@ function App() {
                 path="/Logout"
                 render={() => {
                   setUser((oldState) => (oldState = ""));
+                  createNotification('info');
                   return <Redirect to="/" />;
                 }}
               />

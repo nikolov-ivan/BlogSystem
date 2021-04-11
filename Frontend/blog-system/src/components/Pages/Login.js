@@ -10,7 +10,8 @@ const Login = ({ history }) => {
   const [Password, setPassword] = useState("");
   const { userInfo } = useContext(AuthContext);
   const [user, setUser] = userInfo;
-  let msg = "";
+  let message = "";
+
   const createNotification = (type) => {
     // eslint-disable-next-line default-case
     switch (type) {
@@ -42,24 +43,26 @@ const Login = ({ history }) => {
     const token = await usersService
       .signIn(userData)
       .then((data) => {
-        msg = "success";
+        message = "success";
         setUser(Email);
-        history.push("/");
+
+        history.push("/");        
       })
       .catch((e) => {
-        msg = "error";
+        message = "error";
         history.push("/Login");
       });
-    createNotification(msg);
+    createNotification(message);
     
   };
   return (
-    <>
+    <div className={styles.container}>
       <form onSubmit={onSubmitLoginHandler} className={styles.form}>
         <h1>Login</h1>
         <label htmlFor="Email">
           <p>Email</p>
           <input
+          className = {styles.emailInput}
             type="email"
             name="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -69,17 +72,18 @@ const Login = ({ history }) => {
         <label htmlFor="Password">
           <p>Password</p>
           <input
-            type="text"
+          className={styles.password}
+            type="password"
             name="Password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
         <div>
-          <input type="submit" value="Login" />
+          <input className={styles.button} type="submit" value="Login" />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

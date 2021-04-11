@@ -13,9 +13,13 @@ const Details = ({ history, match }) => {
     postsService.deleteP(match.params.postId);
     history.push("/");
   };
-
   useEffect(() => {
-    postsService.getById(match.params.postId).then((res) => setPost(res)).catch(e=> {return e});
+    postsService
+      .getById(match.params.postId)
+      .then((res) => setPost(res))
+      .catch((e) => {
+        return e;
+      });
   }, [match]);
   return (
     <div className={styles.detail_container}>
@@ -33,7 +37,9 @@ const Details = ({ history, match }) => {
         <button value="delete" onClick={deletePost}>
           Delete
         </button>
-        <Link to={`/Edit/${match.params.postId}`} ><button value="edit">Edit</button></Link>
+        <Link to={`/Edit/${match.params.postId}`}>
+          <button value="edit">Edit</button>
+        </Link>
       </div>
       <p className={styles.details_p}>
         <ReactHtml html={post.content} />
