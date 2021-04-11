@@ -7,13 +7,13 @@ import Register from "./components/Pages/Register";
 import Details from "./components/Pages/Details";
 import Create from "./components/Pages/Create";
 import Sidebar from "./components/Pages/Sidebar";
-import Edit from './components/Pages/Edit';
+import Edit from "./components/Pages/Edit";
 import "./App.css";
 import AuthContext from "./contexts/AuthContext";
 import { useState, useEffect } from "react";
 import isAuth from "./components/Hoc/isAuth";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
-import 'react-notifications/lib/notifications.css';
+import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
 
 function App() {
@@ -21,8 +21,8 @@ function App() {
   const authInfo = {
     isAuthenticated: Boolean(user),
     email: user?.email,
-    token:'',
-  };
+    token: "",
+  };  
   const createNotification = (type) => {
     // eslint-disable-next-line default-case
     switch (type) {
@@ -63,7 +63,7 @@ function App() {
                 path="/Logout"
                 render={() => {
                   setUser((oldState) => (oldState = ""));
-                  createNotification('info');
+                  createNotification("info");
                   return <Redirect to="/" />;
                 }}
               />
@@ -79,7 +79,6 @@ function App() {
             <Sidebar />
           </ErrorBoundary>
         </div>
-
         <Footer />
       </AuthContext.Provider>
     </div>

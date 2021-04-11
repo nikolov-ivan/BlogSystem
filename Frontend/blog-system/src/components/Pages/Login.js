@@ -4,6 +4,7 @@ import AuthContext from "../../contexts/AuthContext";
 import styles from "./Login.module.css";
 import "react-notifications/lib/notifications.css";
 import { NotificationManager } from "react-notifications";
+import isAuth from "../Hoc/isAuth";
 
 const Login = ({ history }) => {
   const [Email, setEmail] = useState("");
@@ -11,7 +12,8 @@ const Login = ({ history }) => {
   const { userInfo } = useContext(AuthContext);
   const [user, setUser] = userInfo;
   let message = "";
-
+ 
+  
   const createNotification = (type) => {
     // eslint-disable-next-line default-case
     switch (type) {
@@ -51,7 +53,8 @@ const Login = ({ history }) => {
       .then((data) => {
         message = "success";
         setUser(Email);
-
+        localStorage.setItem("rememberMe", isAuth);
+        localStorage.setItem("user", Email ? Email : "");
         history.push("/");
       })
       .catch((e) => {
